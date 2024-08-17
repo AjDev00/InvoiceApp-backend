@@ -17,7 +17,7 @@ class DraftController extends Controller
     //save/insert drafts.
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'bill_from_street_address' => 'required',
+            // 'bill_from_street_address' => 'required',
             'bill_to_invoice_date' => 'date',
         ]);
 
