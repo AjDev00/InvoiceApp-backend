@@ -14,9 +14,14 @@ class ItemListController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'items.*.itemName' => 'required|string',
-            'items.*.Qty' => 'required|integer|min:1',
-            'items.*.Price' => 'required|numeric|min:0',
+            'item_name' => 'required|array|min:1',
+            'item_name.*' => 'required|min:3',
+            'quantity' => 'required|array|min:1',
+            'quantity.*' => 'required|integer|min:1',
+            'price' => 'required|array|min:1',
+            'price.*' => 'required|numeric|min:0.01',
+            'total' => 'required|array|min:1',
+            'total.*' => 'required|numeric|min:0.01'
         ]);
         
         if ($validator->fails()) {
@@ -31,6 +36,7 @@ class ItemListController extends Controller
         
         foreach ($request->item_name as $key => $item_name) {
             $item_list = new ItemList();
+            
             $item_list->item_name = $item_name;
             $item_list->quantity = $request->quantity[$key];
             $item_list->price = $request->price[$key];
