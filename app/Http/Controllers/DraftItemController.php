@@ -36,7 +36,7 @@ class DraftItemController extends Controller
             $draft_item = new DraftItem();
 
             $draft_item->item_name = $item_name;
-            $draft_item->draft_id = $request->draft_id; //post the invoice id.
+            $draft_item->draft_id = $request->draft_id; //post the draft id.
             $draft_item->quantity = $request->quantity[$key];
             $draft_item->price = $request->price[$key];
             $draft_item->total = $request->total[$key];

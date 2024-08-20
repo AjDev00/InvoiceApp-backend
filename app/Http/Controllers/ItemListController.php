@@ -16,13 +16,9 @@ class ItemListController extends Controller
         $validator = Validator::make($request->all(), [
             'invoice_id' => 'required|exists:invoices,id', //make sure the invoice id exists.
             'item_name' => 'required|array|min:1',
-            'item_name.*' => 'required|min:3',
             'quantity' => 'required|array|min:1',
-            'quantity.*' => 'required|integer|min:1',
             'price' => 'required|array|min:1',
-            'price.*' => 'required|numeric|min:0.01',
             'total' => 'required|array|min:1',
-            'total.*' => 'required|numeric|min:0.01'
         ]);
         
         if ($validator->fails()) {
