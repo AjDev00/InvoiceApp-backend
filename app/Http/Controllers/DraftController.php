@@ -48,7 +48,8 @@ class DraftController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Draft Successfully Saved',
-            'data' => $draft
+            'data' => $draft,
+            'draft_id' => $draft->id
         ]);
     }
 }

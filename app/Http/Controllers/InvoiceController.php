@@ -60,7 +60,8 @@ class InvoiceController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Invoice created successfully!',
-            'data' => $invoice
+            'data' => $invoice,
+            'invoice_id' => $invoice->id //save the current invoice id.
         ]);
     }
 }

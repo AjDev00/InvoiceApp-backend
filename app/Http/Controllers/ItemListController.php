@@ -14,6 +14,7 @@ class ItemListController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
+            'invoice_id' => 'required|exists:invoices,id', //make sure the invoice id exists.
             'item_name' => 'required|array|min:1',
             'item_name.*' => 'required|min:3',
             'quantity' => 'required|array|min:1',
@@ -32,12 +33,14 @@ class ItemListController extends Controller
             ]);
         }
         
-        $item_list_array = [];
+        $item_list_array = []; //empty array to hold the item list.
         
-        foreach ($request->item_name as $key => $item_name) {
+        //foreach item list, there should be a quantity, price and total.
+        foreach ($request->item_name as $key => $item_name) { 
             $item_list = new ItemList();
-            
+
             $item_list->item_name = $item_name;
+            $item_list->invoice_id = $request->invoice_id; //post the invoice id.
             $item_list->quantity = $request->quantity[$key];
             $item_list->price = $request->price[$key];
             $item_list->total = $request->total[$key];

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DraftController;
+use App\Http\Controllers\DraftItemController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ItemListController;
 use Illuminate\Http\Request;
@@ -23,6 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //inserting drafts.
 Route::post('drafts', [DraftController::class, 'store']);
+
+//inserting item-drafts.
+Route::post('draft-item', [DraftItemController::class, 'store']);
 
 //inserting invoices.
 Route::post('invoices', [InvoiceController::class, 'store']);
