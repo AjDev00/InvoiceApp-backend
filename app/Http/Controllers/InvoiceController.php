@@ -10,7 +10,20 @@ use Illuminate\Support\Facades\Validator;
 class InvoiceController extends Controller
 {
     public function index(){
+        $invoices = Invoice::with('itemList')->get();
 
+        if(empty($invoices)){
+            return response()->json([
+                'status' => false,
+                'message' => 'No Invoices'
+            ]);
+        }
+
+        return response()->json([
+            'status' => true,
+            'data' => $invoices,
+            //'invoice_id' => $invoices->id
+        ]);
     }
 
 

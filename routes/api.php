@@ -33,3 +33,6 @@ Route::post('invoices', [InvoiceController::class, 'store']);
 
 //inserting item-list.
 Route::post('item-list', [ItemListController::class, 'store']);
+
+//getting all invoices.
+Route::get('invoices', [InvoiceController::class, 'index']);
