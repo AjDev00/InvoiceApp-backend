@@ -18,13 +18,13 @@ class DraftController extends Controller
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             // 'bill_from_street_address' => 'required',
-            'bill_to_invoice_date' => 'date',
+            'bill_to_invoice_date' => 'required|date',
         ]);
 
         if($validator->fails()){
             return response()->json([
                 'status' => false,
-                'message' => 'Please fix the errors',
+                'message' => 'Invoice date field is required. Must be a valid date.',
                 'errors' => $validator->errors()
             ]);
         }
