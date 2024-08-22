@@ -39,3 +39,6 @@ Route::get('invoices', [InvoiceController::class, 'index']);
 
 //getting all drafts.
 Route::get('drafts', [DraftItemController::class, 'index']);
+
+//show a single invoice.
+Route::get('show-invoice/{id}', [InvoiceController::class, 'show']);

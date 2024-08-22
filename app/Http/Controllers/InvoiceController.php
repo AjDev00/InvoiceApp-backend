@@ -80,4 +80,22 @@ class InvoiceController extends Controller
             'invoice_id' => $invoice->id //save the current invoice id.
         ]);
     }
+
+
+    //show a single invoice.
+    public function show($id){
+        $invoice = Invoice::with('itemList')->find($id);
+
+        if(!$invoice){
+            return response()->json([
+                'status' => false,
+                'message' => 'Invoice not found!'
+            ]);
+        }
+
+        return response()->json([
+            'status' => true,
+            'data' => $invoice
+        ]);
+    }
 }
