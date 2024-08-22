@@ -12,4 +12,10 @@ class Draft extends Model
     protected $casts = [
         'bill_to_invoice_date' => 'datetime:d-m-Y', // or any standard format for internal use
     ];
+
+
+    //define a relationship with the DraftItem model.
+    public function draftItem(){
+        return $this->hasMany(DraftItem::class);
+    }
 }

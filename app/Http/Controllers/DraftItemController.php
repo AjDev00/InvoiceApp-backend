@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Draft;
 use App\Models\DraftItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -9,7 +10,21 @@ use Illuminate\Support\Facades\Validator;
 class DraftItemController extends Controller
 {
     public function index(){
-        
+        $draft = Draft::with('draftItem')->get();
+        $count = $draft->count();
+
+        if(empty($draft)){
+            return response()->json([
+                'status' => false,
+                'message' => 'No Drafts'
+            ]);
+        }
+
+        return response()->json([
+            'status' => true,
+            'data' => $draft,
+            'draft_count' => $count,
+        ]);
     }
 
     public function store(Request $request){

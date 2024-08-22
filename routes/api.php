@@ -36,3 +36,6 @@ Route::post('item-list', [ItemListController::class, 'store']);
 
 //getting all invoices.
 Route::get('invoices', [InvoiceController::class, 'index']);
+
+//getting all drafts.
+Route::get('drafts', [DraftItemController::class, 'index']);

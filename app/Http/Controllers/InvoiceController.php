@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Validator;
 class InvoiceController extends Controller
 {
     public function index(){
-        $invoices = Invoice::with('itemList')->get();
+        $invoices = Invoice::with('itemList')->orderBy("created_at", "desc")->get();
+        $count = $invoices->count();
 
         if(empty($invoices)){
             return response()->json([
@@ -22,6 +23,8 @@ class InvoiceController extends Controller
         return response()->json([
             'status' => true,
             'data' => $invoices,
+            'total_count' => $count,
+            // 'id_number' => $invoices->id
             //'invoice_id' => $invoices->id
         ]);
     }
