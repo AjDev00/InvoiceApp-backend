@@ -65,4 +65,42 @@ class DraftItemController extends Controller
             'data' => $draft_item_array
         ]);
     }
+
+
+    //show a single draft.
+    public function show($id){
+        $draft = Draft::with('draftItem')->find($id);
+
+        if(!$draft){
+            return response()->json([
+                'status' => false,
+                'message' => 'Draft not found!'
+            ]);
+        }
+
+        return response()->json([
+            'status' => true,
+            'data' => $draft
+        ]);
+    }
+
+
+    //delete a draft.
+    public function destroy($id){
+        $draft = Draft::with('draftItem')->find($id);
+
+        if(!$draft){
+            return response()->json([
+                'status' => false,
+                'message' => 'Draft not found!'
+            ]);
+        }
+
+        $draft->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Draft deleted successfully!'
+        ]);
+    }
 }

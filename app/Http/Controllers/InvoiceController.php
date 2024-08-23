@@ -98,4 +98,25 @@ class InvoiceController extends Controller
             'data' => $invoice
         ]);
     }
+
+
+    //delete a single invoice.
+    public function destroy($id){
+        $invoice = Invoice::with('itemList')->find($id);
+
+        if(!$invoice){
+            return response()->json([
+                'status' => false,
+                'message' => 'Invoice not found!'
+            ]);
+        }
+
+        $invoice->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Deleted Successfully'
+        ]);
+
+    }
 }

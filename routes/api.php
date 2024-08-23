@@ -42,3 +42,12 @@ Route::get('drafts', [DraftItemController::class, 'index']);
 
 //show a single invoice.
 Route::get('show-invoice/{id}', [InvoiceController::class, 'show']);
+
+//show a single draft.
+Route::get('show-drafts/{id}', [DraftItemController::class, 'show']);
+
+//delete a single invoice.
+Route::delete('delete-invoice/{id}', [InvoiceController::class, 'destroy']);
+
+//delete a single draft.
+Route::delete('delete-draft/{id}', [DraftItemController::class, 'destroy']);
