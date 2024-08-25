@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 
 class InvoiceController extends Controller
 {
+
+    //show all invoices.
     public function index(){
         $invoices = Invoice::with('itemList')->orderBy("created_at", "desc")->get();
         $count = $invoices->count();
@@ -30,6 +32,7 @@ class InvoiceController extends Controller
     }
 
 
+    //insert invoices.
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'bill_from_street_address' => 'required|min:3',

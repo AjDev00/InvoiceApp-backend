@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 
 class DraftItemController extends Controller
 {
+
+    //show all drafts.
     public function index(){
         $draft = Draft::with('draftItem')->get();
         $count = $draft->count();
@@ -27,6 +29,8 @@ class DraftItemController extends Controller
         ]);
     }
 
+
+    //insert drafts.
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'draft_id' => 'required|exists:drafts,id', //make sure the invoice id exists.
