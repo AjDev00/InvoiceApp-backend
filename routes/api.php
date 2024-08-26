@@ -51,3 +51,9 @@ Route::delete('delete-invoice/{id}', [InvoiceController::class, 'destroy']);
 
 //delete a single draft.
 Route::delete('delete-draft/{id}', [DraftItemController::class, 'destroy']);
+
+//edit a single invoice.
+Route::put('edit-invoice/{id}', [InvoiceController::class, 'update']);
+
+//edit a single item-list.
+Route::put('edit-item/{id}', [ItemListController::class, 'update']);
