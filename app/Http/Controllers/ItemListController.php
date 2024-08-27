@@ -90,8 +90,8 @@ class ItemListController extends Controller
             $item_list->quantity = $request->quantity[$key];
             $item_list->price = $request->price[$key];
             $item_list->total = $request->total[$key];
-            $item_list_array[] = $item_list;
             $item_list->save();
+            $item_list_array[] = $item_list;
         }
         
         return response()->json([
