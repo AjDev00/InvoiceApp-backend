@@ -60,3 +60,6 @@ Route::put('edit-item/{invoice_id}', [ItemListController::class, 'update']);
 
 //get item list with invoice id.
 Route::get('get-item-list/{invoice_id}', [ItemListController::class, 'index']);
+
+//delete a single item-list.
+Route::delete('delete-item/{id}', [ItemListController::class, 'destroy']);

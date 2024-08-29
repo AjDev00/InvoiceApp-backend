@@ -104,7 +104,7 @@ class ItemListController extends Controller
 
         // Loop through existing items and update them with request data
         foreach ($items as $index => $item) {
-            // Ensure the request data has the item to update
+            //check if there is a corresponding data in the request arrays.
             if (isset($item_name_array[$index])) {
                 $item->item_name = $item_name_array[$index];
             }
@@ -126,7 +126,7 @@ class ItemListController extends Controller
             $updatedItems[] = $item;
         }
 
-        // Check if more items need to be added
+        // Check if more items need to be added.
         for ($i = count($items); $i < count($item_name_array); $i++) {
             // Create and save new items based on remaining request data
             $newItem = new ItemList();
@@ -147,5 +147,25 @@ class ItemListController extends Controller
 
     }
 
+
+    //delete a single item.
+    public function destroy($id){
+        $item_list = ItemList::find($id);
+
+        if(!$item_list){
+            return response()->json([
+                'status' => false,
+                'message' => 'ItemList not found!'
+            ]);
+        }
+
+        $item_list->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Deleted Successfully'
+        ]);
+
+    }
     
 }
