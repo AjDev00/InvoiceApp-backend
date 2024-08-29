@@ -56,4 +56,7 @@ Route::delete('delete-draft/{id}', [DraftItemController::class, 'destroy']);
 Route::put('edit-invoice/{id}', [InvoiceController::class, 'update']);
 
 //edit a single item-list.
-Route::put('edit-item/{id}', [ItemListController::class, 'update']);
+Route::put('edit-item/{invoice_id}', [ItemListController::class, 'update']);
+
+//get item list with invoice id.
+Route::get('get-item-list/{invoice_id}', [ItemListController::class, 'index']);
