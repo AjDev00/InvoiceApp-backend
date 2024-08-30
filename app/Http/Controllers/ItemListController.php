@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 
 class ItemListController extends Controller
 {
+
+    //get a single invoice item-list.
     public function index($invoice_id){
         $item_list = ItemList::where('invoice_id', $invoice_id)->get();
 

@@ -3,14 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Draft;
+use App\Models\DraftItem;
 use Illuminate\Http\Request;
 use Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class DraftController extends Controller
 {
-    public function index(){
 
+    //get a single draft item.
+    public function index($draft_id){
+        $draft_item = DraftItem::where('draft_id', $draft_id)->get();
+
+        if(!$draft_item){
+            return response()->json([
+                'status' => false,
+                'message' => 'No draft item with this draft id'
+            ]);
+        }
+
+        return response()->json([
+            'status' => true,
+            'data' => $draft_item
+        ]);
     }
 
 

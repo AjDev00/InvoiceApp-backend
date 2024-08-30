@@ -63,3 +63,6 @@ Route::get('get-item-list/{invoice_id}', [ItemListController::class, 'index']);
 
 //delete a single item-list.
 Route::delete('delete-item/{id}', [ItemListController::class, 'destroy']);
+
+//get draft item with draft id.
+Route::get('get-draft-item/{draft_id}', [DraftController::class, 'index']);
