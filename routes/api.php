@@ -69,3 +69,6 @@ Route::get('get-draft-item/{draft_id}', [DraftController::class, 'index']);
 
 //update a single draft.
 Route::put('edit-draft/{id}', [DraftController::class, 'update']);
+
+//update a single draft-item.
+Route::put('edit-draft-item/{draft_id}', [DraftItemController::class, 'update']);
