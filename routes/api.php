@@ -66,3 +66,6 @@ Route::delete('delete-item/{id}', [ItemListController::class, 'destroy']);
 
 //get draft item with draft id.
 Route::get('get-draft-item/{draft_id}', [DraftController::class, 'index']);
+
+//update a single draft.
+Route::put('edit-draft/{id}', [DraftController::class, 'update']);
