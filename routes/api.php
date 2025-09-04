@@ -72,3 +72,6 @@ Route::put('edit-draft/{id}', [DraftController::class, 'update']);
 
 //update a single draft-item.
 Route::put('edit-draft-item/{draft_id}', [DraftItemController::class, 'update']);
+
+//delete a single draft-item.
+Route::delete('delete-draft-item/{id}', [DraftItemController::class, 'deleteItem']);

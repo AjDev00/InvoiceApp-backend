@@ -189,4 +189,23 @@ class DraftItemController extends Controller
             'message' => 'Draft deleted successfully!'
         ]);
     }
+
+    public function deleteItem($id){
+        $item_list = DraftItem::find($id);
+
+        if(!$item_list){
+            return response()->json([
+                'status' => false,
+                'message' => 'Draft-ItemList not found!'
+            ]);
+        }
+
+        $item_list->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Deleted Successfully'
+        ]);
+
+    }
 }
